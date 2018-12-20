@@ -1,15 +1,14 @@
 ![CF](http://i.imgur.com/7v5ASc8.png) LAB
 =================================================
 
-## Project Name
+## Buffers
 
-### Author: Student/Group Name
+### Author: Siobhan Niess
 
 ### Links and Resources
 * [repo](http://xyz.com)
 * [travis](http://xyz.com)
-* [back-end](http://xyz.com)
-* [front-end](http://xyz.com)
+* [server](http://xyz.com)
 
 ### Modules
 #### `modulename.js`

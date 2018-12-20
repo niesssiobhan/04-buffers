@@ -1,0 +1,22 @@
+{
+  "name": "04-buffers",
+  "version": "1.0.0",
+  "description": "buffers",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/niesssiobhan/04-buffers.git"
+  },
+  "author": "siobhan niess",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/niesssiobhan/04-buffers/issues"
+  },
+  "homepage": "https://github.com/niesssiobhan/04-buffers#readme",
+  "dependencies": {
+    "node": "^11.4.0"
+  }
+}
