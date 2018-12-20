@@ -6,9 +6,9 @@
 ### Author: Siobhan Niess
 
 ### Links and Resources
-* [repo](http://xyz.com)
-* [travis](http://xyz.com)
-* [server](http://xyz.com)
+* [repo](https://github.com/niesssiobhan/04-buffers)
+* [travis](https://travis-ci.com/niesssiobhan/04-buffers)
+* [server](https://niess-04-lab.herokuapp.com/)
 
 ### Modules
 #### `modulename.js`
