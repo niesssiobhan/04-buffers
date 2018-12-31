@@ -30,8 +30,8 @@ let liOpen = new Buffer('<li>');
 let liClose = new Buffer('</li>');
 
 fs.readFile('./files/pair-programming.txt', (err, data) => {
-  let articleConcat = [startArticle, data, endArticle];
   if(err) { throw err; }
+  let articleConcat = [startArticle, data, endArticle];
 
   fs.writeFile('./files/pair-programming.html', articleConcat, err => {
     if(err) { throw err; }
