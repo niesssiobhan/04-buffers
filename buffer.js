@@ -1,40 +1,59 @@
 'use strict';
 
-let array = ['Jared', 'Teagan', 'Siobhan'];
-array.forEach( name => {
-  console.log(name);
-});
-
 const fs = require('fs');
+const reader = require('readline');
 
-let filePath = './files/pair-programming.html';
+let openArticle = new Buffer('<article>');
+let closedArticle = new Buffer('</article>');
 
-// let bufferOne = new Buffer('\'use strict\';\n');
-// let bufferTwo = new Buffer('let array = [\'Jared\', \'Teagan\', \'Siobhan\'];\n');
-// let bufferThree = new Buffer('array.forEach( name => {\n');
-// let bufferFour = new Buffer(' console.log(name)\n');
-// let bufferFive = new Buffer('});');
-
-function createBuffer(str) {
-  let buffer = new Buffer.from('');
-  for(let i = 0; i < str.length; i++){
-    buffer += new Buffer.from(str[i]);
+class Converter {
+  
+  constructor(){
+    this.buffer = Buffer.from('');
+    this.tags = {};
+    this.openArticle = Buffer.from('<article>');
+    this.closedArticle = Buffer.from('</article>');
   }
-  return buffer;
+
+  newTag(tag, buffer){
+    if(! this.tags[tag]) {
+      this.tags[tag] = {
+        open: Buffer.from(`<${tag}>`),
+        close: Buffer.from(`</${tag}>`),
+      };
+    }
+    this.buffer = Buffer.concat([this.buffer, this.tags[tag].open, buffer, this.tags[tag].close]);
+  }
+
+  convert(file){
+
+    let readLine = reader.newInterface({
+      input: fs.readStream(file),
+    });
+
+    readLine.on('line', function(line) {
+      if(line.match(/^[0-9]\./)) {
+        this.newTag('h3', Buffer.from(line));
+      }
+      else if(line.match(/\./)){
+        line.split('.').forEach(eachSentence => {
+          eachSentence && this.newTag('li', Buffer.from(eachSentence));
+        });
+      }
+      else if(line){
+        this.newTag('h2', Buffer.from(line));
+      }
+  
+    }.bind(this));
+  
+    readLine.on('close', () => {
+
+      fs.writeFile('./files/pair-programming.html', Buffer.concat([openArticle, this.buffer, closedArticle]), (err, data) => {
+        console.log('there has been a file created');
+      });
+    });
+  }
 }
 
-fs.readFile(path, function callback(err, data) {
-  if(err) {throw (err);}
-  console.log('reading file');
-  
-  fs.writeFile(filePath, data, (err) => {
-    if(err) {throw (err);}
-    console.log('the file has been successfully written');
-  });
-});
-
-// let array = [bufferOne, bufferTwo, bufferThree, bufferFour, bufferFive];
-
-// let finalBuffer = Buffer.concat(array);
-let buffer = createBuffer(array);
-createfile('./files/loop.js', buffer);
+let html = new Converter();
+html.convert('./files/pair-programming.txt');

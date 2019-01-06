@@ -11,7 +11,9 @@
 * [server](https://niess-04-lab.herokuapp.com/)
 
 ### Modules
-#### `modulename.js`
+#### `loop.js`
+#### `buffer.js`
+#### `index.js`
 ##### Exported Values and Methods
 
 #### Collaborators 
@@ -19,23 +21,18 @@
 * Brent
 * Ryan
 * Heather
+* Hannah
 
 ### Setup
 #### `.env` requirements
-* `PORT` - Port Number
-* `MONGODB_URI` - URL to the running mongo instance/db
+* `PORT` - Defined by the ENV
 
 #### Running the app
-* `npm start`
-* Endpoint: `/foo/bar/`
-  * Returns a JSON object with abc in it.
-* Endpoint: `/bing/zing/`
-  * Returns a JSON object with xyz in it.
+* First you need to make your loop.js file 
+* Then, in your terminal, you run `node index.js`
+* Once the comman has been run you will see the new files that have been created 
 
 #### Tests
 * How do you run tests?
 * What assertions were made?
 * What assertions need to be / should be made?
-
-#### UML
-Link to an image of the UML for your application and response to events
