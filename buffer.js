@@ -27,8 +27,8 @@ class Converter {
 
   convert(file){
 
-    let readLine = reader.newInterface({
-      input: fs.readStream(file),
+    let readLine = reader.createInterface({
+      input: fs.createReadStream(file),
     });
 
     readLine.on('line', function(line) {
